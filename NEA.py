@@ -8,7 +8,7 @@ import sqlite3
 import datetime
 from pathlib import Path
 
-
+#test
 BASE_DIR = Path("/home/willy/Documents/NEA")
 DB_PATH = BASE_DIR / "application.db"
 
@@ -396,7 +396,7 @@ class Application(tk.Tk):
         
 
         #This is going to define the environment for all pages, essentual the central content frame.
-        self.content = tk.Frame(self, bg="#000000")
+        self.content = tk.Frame(self, bg="#FFFFFF")
 
 
         # Copying over the fonts into the container, so it actually works.
