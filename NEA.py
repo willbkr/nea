@@ -8,7 +8,7 @@ import sqlite3
 import datetime
 from pathlib import Path
 
-#test
+#test uhhhhhhhhhhhhhhhh
 BASE_DIR = Path("/home/willy/Documents/NEA")
 DB_PATH = BASE_DIR / "application.db"
 
@@ -26,7 +26,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS users
           saveme INTEGER DEFAULT 0)''')
 
 #Creating the albums table, if it isnt there already.
-#The artist ID is foreign, so we can add info about artists later on
+#The artist ID is foreign, so4fjryehcxvgyt7yl65oihghtr67hy5  h j,yyubhyuj6tuj9f8ngrvh ydf6th67rvh4ujg7okvyhji5gtmjt6gfffffffe76ducvjm, we can add info about artists later on
 c.execute('''CREATE TABLE IF NOT EXISTS albums
              (albumid INTEGER PRIMARY KEY AUTOINCREMENT,
           title TEXT, 
