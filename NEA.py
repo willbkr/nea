@@ -5,6 +5,8 @@ from PIL import Image, ImageTk, ImageOps
 import random
 import string
 import sqlite3
+import hashlib
+import os
 import datetime
 from pathlib import Path
 
@@ -48,6 +50,30 @@ c.execute('''CREATE TABLE IF NOT EXISTS artists (
 #Closing the global connection
 c.close()
 
+def hash_password(password):
+    """Hashes a password with a random salt and returns a hex string."""
+    salt = os.urandom(32) # Generate a random 32-byte salt
+    key = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
+    return (salt + key).hex() # Return as a hex string for easy storage
+
+def verify_password(stored_hex, provided_password):
+    """Verifies a provided password against the stored hex string."""
+    try:
+        # Convert the hex string back to bytes
+        stored_bytes = bytes.fromhex(stored_hex)
+        salt = stored_bytes[:32] # The first 32 bytes are the salt
+        stored_key = stored_bytes[32:] # The rest is the actual hash
+        
+        # Hash the new password using the OLD salt
+        new_key = hashlib.pbkdf2_hmac('sha256', provided_password.encode('utf-8'), salt, 100000)
+        
+        return new_key == stored_key
+    except:
+        return False # Fails safe if data is corrupted
+
+
+
+
 #This function inserts data into the SQL database, and generates the information regarding logins and account creation date.
 def registeruser(username, password):
 
@@ -59,9 +85,13 @@ def registeruser(username, password):
     try:
         joindate = datetime.date.today()
         lastlogin = joindate
+
+        #NEW CODE FOR SECURE PASSWORDS!
+        secure_password = hash_password(password)
+
         c.execute(
                 "INSERT INTO users (username, password, joindate, lastlogin) VALUES (?, ?, ?, ?)",
-                (username, password, joindate, lastlogin)
+                (username, secure_password, joindate, lastlogin) # PWD VARIABLE CHANGED TOO!!
         )
         conn.commit()
         messagebox.showinfo("Success", "Account created successfully!")
@@ -72,6 +102,7 @@ def registeruser(username, password):
 
 
     conn.close()
+
 
 #This function returns every username, so in the Admin Panel the dropdown stays populated with results from the database.
 def listusersnids(): #List USERS N IDS (it sounded better in my head)
@@ -94,7 +125,8 @@ def getuserdetails(user_id):
         )
         return c.fetchone()
 
-#This function checks to see if an artist is already inside of the database, (as of artist potentially having multiple albums) and if its already there- it links the album to the right artistid. If not it just creates a new record for the artist.
+#This function checks to see if an artist is already inside of the database, (as of artist potentially having multiple albums) and if its already there- 
+# it links the album to the right artistid. If not it just creates a new record for the artist.
 def artistcheckregister(conn, artist_name):
     c = conn.cursor()
     c.execute("SELECT artistid FROM artists WHERE name = ?", (artist_name,))
@@ -103,7 +135,7 @@ def artistcheckregister(conn, artist_name):
         return result[0]
     c.execute("INSERT INTO artists (name) VALUES (?)", (artist_name,))
     conn.commit()
-    return c.lastrowid  # This Says Last Row ID, not lastrowid ik it looks confusing
+    return c.lastrowid  # This Says Last Row ID, not lastrowid im aware it looks it looks confusing
 
 #This function inserts data about albums, and it also calls the checking function to make sure it actually links it to an artist.
 def addalbum(title, artist_name, date, rating, genre, coverpath):
@@ -122,7 +154,6 @@ def addalbum(title, artist_name, date, rating, genre, coverpath):
     except ValueError:
         messagebox.showerror("Error", "Year and Rating must be integers.")
         return
-
 
     conn.close()
     messagebox.showinfo("Success", f"Album '{title}' by '{artist_name}' added successfully!")
@@ -181,10 +212,19 @@ def getalbum(albumid):
 def credscheck(username, password):
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
-    c.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
+
+    #CHANGE: ONLY SELECT USERNAME. We'll do the password in a bit
+    c.execute("SELECT * FROM users WHERE username = ?", (username,))
     user = c.fetchone()
     conn.close()
-    return user
+
+    #CHANGE: Check if user exists
+    if user:
+        stored_password_hex = user[2] # In the table structure, column 2 is where password lives
+        #get to the verifying!!!!
+        if verify_password(stored_password_hex, password):
+            return user #Success!
+
 
 def updatelastlogin(username):
     conn = sqlite3.connect(DB_PATH)
@@ -371,11 +411,7 @@ def captchaimage(captcha_text):
     image.write(captcha_text, BASE_DIR / "captcha.png")
     return(captcha_text)  #Saving it to a file so it can be used in the window (BASE DIR USED!! absolute path)
 
-
-
 # DIVIDER
-
-
 
 class Application(tk.Tk):
     def __init__(self):
@@ -905,36 +941,48 @@ class AdminPage(tk.Frame):
         self.saveme_var.set("")
 
     def saveuserchanges(self):
-        display = self.uservar.get()
-        user_id = self.user_display_map.get(display)
-        if not user_id:
-            messagebox.showerror("Error", "Select a user first.")
-            return
+            display = self.uservar.get()
+            user_id = self.user_display_map.get(display)
+            if not user_id:
+                messagebox.showerror("Error", "Select a user first.")
+                return
 
-        new_username = self.username_var.get()
-        new_password = self.password_var.get()
-        new_lastlogin = self.lastlogin_var.get()
-        new_saveme = 1 if self.saveme_var.get().strip().lower() == "yes" else 0
+            new_username = self.username_var.get()
+            new_password_input = self.password_var.get() # grab the stuff in the boxes
+            new_lastlogin = self.lastlogin_var.get()
+            new_saveme = 1 if self.saveme_var.get().strip().lower() == "yes" else 0
 
-        try:
-            with sqlite3.connect(DB_PATH) as conn:
-                c = conn.cursor()
-                c.execute(
-                    """
-                    UPDATE users
-                    SET username = ?, password = ?, lastlogin = ?, saveme = ?
-                    WHERE userid = ?
-                    """,
-                    (new_username, new_password, new_lastlogin, new_saveme, user_id),
-                )
-                conn.commit()
-        except sqlite3.IntegrityError:
-            messagebox.showerror("Error", "That username is already taken.")
-            return
+            try:
+                with sqlite3.connect(DB_PATH) as conn:
+                    c = conn.cursor()
+                    
+                    if new_password_input:
+                        #New entry needs hashing so lets do that!
+                        final_password = hash_password(new_password_input)
+                    else:
+                        #If the box is empty, locate the original hash and keep it in there
+                        c.execute("SELECT password FROM users WHERE userid = ?", (user_id,))
+                        result = c.fetchone()
+                        if result:
+                            final_password = result[0]
+                        else:
+                            final_password = hash_password("password") #if it fails just smash password in there
 
-        messagebox.showinfo("Saved", f"Updated user #{user_id}.")
-        self.refreshuserdropdown(selected_id=user_id)
-        self.populateuserinfo()
+                    c.execute(
+                        """
+                        UPDATE users
+                        SET username = ?, password = ?, lastlogin = ?, saveme = ?
+                        WHERE userid = ?
+                        """,
+                        (new_username, final_password, new_lastlogin, new_saveme, user_id),
+                    )
+                    conn.commit()
+            except sqlite3.IntegrityError:
+                messagebox.showerror("Error", "That username is already taken.")
+                return
 
+            messagebox.showinfo("Saved", f"Updated user #{user_id}.")
+            self.refreshuserdropdown(selected_id=user_id)
+            self.populateuserinfo()
 app = Application()
 app.mainloop()
