@@ -28,7 +28,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS users
           saveme INTEGER DEFAULT 0)''')
 
 #Creating the albums table, if it isnt there already.
-#The artist ID is foreign, so4fjryehcxvgyt7yl65oihghtr67hy5  h j,yyubhyuj6tuj9f8ngrvh ydf6th67rvh4ujg7okvyhji5gtmjt6gfffffffe76ducvjm, we can add info about artists later on
+#The artist ID is foreign, so we can add info about artists later on
 c.execute('''CREATE TABLE IF NOT EXISTS albums
              (albumid INTEGER PRIMARY KEY AUTOINCREMENT,
           title TEXT, 
@@ -51,26 +51,22 @@ c.execute('''CREATE TABLE IF NOT EXISTS artists (
 c.close()
 
 def hash_password(password):
-    """Hashes a password with a random salt and returns a hex string."""
     salt = os.urandom(32) # Generate a random 32-byte salt
     key = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
-    return (salt + key).hex() # Return as a hex string for easy storage
+    return (salt + key).hex() # return as a string in hex!!!!!!
 
 def verify_password(stored_hex, provided_password):
-    """Verifies a provided password against the stored hex string."""
     try:
-        # Convert the hex string back to bytes
+        # convert the hex string back into bytes
         stored_bytes = bytes.fromhex(stored_hex)
-        salt = stored_bytes[:32] # The first 32 bytes are the salt
-        stored_key = stored_bytes[32:] # The rest is the actual hash
+        salt = stored_bytes[:32] #The first 32 bytes are the salt
+        stored_key = stored_bytes[32:] #the rest is the actual hash
         
         # Hash the new password using the OLD salt
         new_key = hashlib.pbkdf2_hmac('sha256', provided_password.encode('utf-8'), salt, 100000)
-        
         return new_key == stored_key
     except:
-        return False # Fails safe if data is corrupted
-
+        return False # failsafe?
 
 
 
@@ -205,7 +201,32 @@ def getalbum(albumid):
 # addalbum("dariacore 3: is it really a joke if no one laughs?", "leroy", 2022, 9, "Dariacore / Mashcore", "assets/dariacore3.jpg")
 # addalbum("Scary Monsters and Nice Sprites", "Skrillex", 2010, 10, "Dubstep / EDM", "assets/scary_monsters.jpg")
 
+# # HIP HOP
+# addalbum("Mm.. Food", "MF DOOM", 2004, 10, "Hip Hop", "assets/mm_food.jpg")
+# addalbum("Illmatic", "Nas", 1994, 10, "Hip Hop", "assets/illmatic.jpg")
+# addalbum("Flower Boy", "Tyler, The Creator", 2017, 9, "Hip Hop", "assets/flower_boy.jpg")
+# addalbum("Stankonia", "OutKast", 2000, 9, "Hip Hop", "assets/stankonia.jpg")
+# addalbum("2014 Forest Hills Drive", "J. Cole", 2014, 8, "Hip Hop", "assets/forest_hills.jpg")
+# addalbum("All My Heroes Are Cornballs", "JPEGMAFIA", 2019, 9, "Experimental Hip Hop", "assets/amhac.jpg")
 
+# # ROCK / ALTERNATIVE
+# addalbum("Currents", "Tame Impala", 2015, 9, "Psych Rock", "assets/currents.jpg")
+# addalbum("The Queen Is Dead", "The Smiths", 1986, 10, "Alternative", "assets/queen_is_dead.jpg")
+# addalbum("The Black Parade", "My Chemical Romance", 2006, 9, "Emo / Rock", "assets/black_parade.jpg")
+# addalbum("White Pony", "Deftones", 2000, 9, "Nu Metal", "assets/white_pony.jpg")
+# addalbum("Twin Fantasy", "Car Seat Headrest", 2018, 9, "Indie Rock", "assets/twin_fantasy.jpg")
+
+# # POP
+# addalbum("Thriller", "Michael Jackson", 1982, 10, "Pop", "assets/thriller.jpg")
+# # R&B
+# addalbum("The Miseducation of Lauryn Hill", "Lauryn Hill", 1998, 10, "R&B", "assets/miseducation.jpg")
+# addalbum("Channel Orange", "Frank Ocean", 2012, 10, "R&B", "assets/channel_orange.jpg")
+
+# # ELECTRONIC / JAZZ
+# addalbum("Selected Ambient Works 85-92", "Aphex Twin", 1992, 10, "Electronic", "assets/saw_85_92.jpg")
+# addalbum("Nurture", "Porter Robinson", 2021, 9, "Electronic", "assets/nurture.jpg")
+# addalbum("Alive 2007", "Daft Punk", 2007, 10, "Electronic", "assets/alive_2007.jpg")
+# addalbum("Head Hunters", "Herbie Hancock", 1973, 9, "Jazz", "assets/head_hunters.jpg")
 
 
 #This function checks to see whether the info a user has entered, matches with a username and password from the database.
@@ -339,11 +360,34 @@ def bubblesort(data, key_index, reverse=False):
 
     return arr
 
-def showcovers(parent):
-    with sqlite3.connect(DB_PATH) as conn:
-        c = conn.cursor()
-        c.execute("SELECT title, coverpath FROM albums ORDER BY dateadded DESC LIMIT 20")
-        albums = c.fetchall()
+# This function makes sure the image path is valid so the app doesn't crash
+def resolve_cover(raw):
+    placeholder = BASE_DIR / "assets" / "placeholder.png"
+    if not raw: # if the coverpath is empty, default image is subbed in
+        return placeholder
+    
+    raw = raw.strip()
+    candidate = Path(raw)
+    
+    if candidate.is_absolute():
+        if str(candidate).startswith(str(BASE_DIR)): # Makes sure its within the base directory
+            resolved = candidate #the absolute path of the image
+        else:
+            return placeholder # If not then it returns the default image
+    else:
+        # Added 'r' to fix the syntax warning!
+        resolved = BASE_DIR / raw.lstrip(r'\/') # it shows the relative path of the image
+        
+    return resolved if Path(resolved).exists() else placeholder # if the path exists, it returns it- and if not it returns the default
+
+def showcovers(parent, album_list=None):
+    # Logic change: If we get a list (from recommendations), use it.
+    # If not, we grab the recent ones from the DB like before.
+    if album_list is None:
+        with sqlite3.connect(DB_PATH) as conn:
+            c = conn.cursor()
+            c.execute("SELECT title, coverpath FROM albums ORDER BY dateadded DESC LIMIT 20")
+            album_list = c.fetchall()
 
     frame = tk.Frame(parent)
     frame.pack(pady=10)
@@ -353,33 +397,19 @@ def showcovers(parent):
     coversize = (250, 250)
     per_row = 4
 
-    def resolve_cover(raw):
-        if not raw: # if the coverpath is empty, default image is subbed in
-            return placeholder
-        raw = raw.strip()
-        candidate = Path(raw)
-        if candidate.is_absolute():
-            if str(candidate).startswith(str(BASE_DIR)): # Makes sure its within the base directory
-                resolved = candidate #the absolute path of the image
-            else:
-                return placeholder # If not then it returns the default image
-        else:
-            resolved = BASE_DIR / raw.lstrip('\/') # it shows the relative path of the image
-        return resolved if Path(resolved).exists() else placeholder # if the path exists, it returns it- and if not it returns the default 
-
-    if not albums: # If there isnt anything in the database, it just replaces the grid with a message saying that
-        empty_label = tk.Label(frame, text="No albums yet", font=getattr(parent.master, "defaultFont", None)) # Oh no!!
+    if not album_list: # If there isnt anything in the database/list, it just replaces the grid with a message saying that
+        empty_label = tk.Label(frame, text="No albums found", font=getattr(parent.master, "defaultFont", None)) # Oh no!!
         empty_label.pack(pady=20)
         return frame
 
-    for index, (title, coverpath) in enumerate(albums):
-        candidate = resolve_cover(coverpath)
+    for index, (title, coverpath) in enumerate(album_list):
+        candidate = resolve_cover(coverpath) # calling the global function now
         try:
             image = Image.open(candidate).convert("RGBA") # It tries to open the image
         except (FileNotFoundError, OSError): #If the file isnt found, or it cant load for some reason- it just smashes the placeholder in there
             image = Image.open(placeholder).convert("RGBA")
 
-        image = ImageOps.fit(image, coversize, Image.LANCZOS) # Resizing the image to make all the pics the same on the home screen
+        image = ImageOps.fit(image, coversize, Image.LANCZOS) # Resizing the image to make all the pics the same
         photo = ImageTk.PhotoImage(image) # making it a tk image
         images.append(photo) # doing it
 
@@ -390,7 +420,8 @@ def showcovers(parent):
         cover_label = tk.Label(album_frame, image=photo)
         cover_label.grid(row=0, column=0)
 
-        title_font = getattr(app, "defaultFont") # Grabs the font from inside the tk app
+        # Grabs the font safely
+        title_font = font.nametofont("TkDefaultFont")
         title_label = tk.Label(album_frame, text=title, font=title_font, wraplength=coversize[0])
         title_label.grid(row=1, column=0, pady=(5, 0))
 
@@ -398,6 +429,7 @@ def showcovers(parent):
         frame.grid_columnconfigure(col, weight=1)
     frame.images = images  # Keep references so images stay visible.
     return frame
+
 
 def captchagenerate( # Generating a string of random letters and numbers when called
         letters = string.ascii_lowercase + string.digits, #Defining what the string consists of
@@ -411,7 +443,90 @@ def captchaimage(captcha_text):
     image.write(captcha_text, BASE_DIR / "captcha.png")
     return(captcha_text)  #Saving it to a file so it can be used in the window (BASE DIR USED!! absolute path)
 
+def get_unique_genres():
+    """
+    Scans the database and returns a random selection of 10 unique genres.
+    """
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    
+    # ORDER BY RANDOM() picks different genres every time you call it
+    c.execute("SELECT DISTINCT genre FROM albums ORDER BY RANDOM()")
+    rows = c.fetchall()
+    conn.close()
+    
+    unique_genres = set()
+    for row in rows:
+        if row[0]:
+            # Split tags like "Pop / Rock" into individual words
+            parts = [p.strip() for p in str(row[0]).split('/')]
+            for p in parts:
+                if p:
+                    unique_genres.add(p)
+                    
+    # Convert set back to a list
+    genre_list = list(unique_genres)
+    
+    # Shuffle the final list and take the first 10
+    random.shuffle(genre_list)
+    return genre_list[:10]
+
+def generate_recommendations(targetgenre, prioritiserecent=False):
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("SELECT * FROM albums")
+    all_albums = c.fetchall()
+    conn.close()
+
+    scored_albums = []
+
+    #print(f"Finding reccomendations in: {targetgenre}")
+
+    for album in all_albums:
+        # album[5] is the Genre field
+        db_genre = str(album[5]).lower()
+        target = targetgenre.lower()
+
+        #only proceed if the target genre actually exists in the database
+        if target not in db_genre:
+            continue 
+
+        # base score for a  match
+        score = 50 
+        
+        #quality factor!!!!!! finds the rating of an album and then scores it by multiplying by two
+        # and adds it to the total album score
+        try:
+            rating = int(album[4])
+            score += (rating * 2) 
+        except:
+            score += 10 # fallback midrange rating incase its missing from database( how??!?!)
+
+        # how recent it is (max 30 points)
+        try:
+            year = int(album[3])
+            if prioritiserecent:
+                if year >= 2023:
+                    score += 30 # Reward new music
+                elif year >= 2018:
+                    score += 10 # reward for being somewhat recent
+            else:
+                #if they dont check the recency box....
+                pass
+        except:
+            pass
+
+        print(f"PASS: {album[1]} | Score: {score}/100")
+        scored_albums.append((score, album))
+
+    # bubblesort it!!!!!!!!
+    scored_albums = bubblesort(scored_albums, 0)
+
+    # Return top 8 results
+    return [item[1] for item in scored_albums[:8]]
 # DIVIDER
+
+
 
 class Application(tk.Tk):
     def __init__(self):
@@ -448,7 +563,7 @@ class Application(tk.Tk):
         self.page_menu = tk.Menu(self, tearoff=False)
         self.page_menu.add_command(label="Home", command=lambda:self.shownewframe(Home))
         self.page_menu.add_command(label="Search", command=lambda:self.shownewframe(Search))
-        self.page_menu.add_command(label="Rankings", command=lambda:self.shownewframe(Home))
+        self.page_menu.add_command(label="Recomendations", command=lambda:self.shownewframe(Recommendations))
 
 
         # lol its seperated in the code tooo!!! hahahahaha lo lolololol
@@ -967,7 +1082,6 @@ class AdminPage(tk.Frame):
                             final_password = result[0]
                         else:
                             final_password = hash_password("password") #if it fails just smash password in there
-
                     c.execute(
                         """
                         UPDATE users
@@ -984,5 +1098,77 @@ class AdminPage(tk.Frame):
             messagebox.showinfo("Saved", f"Updated user #{user_id}.")
             self.refreshuserdropdown(selected_id=user_id)
             self.populateuserinfo()
+
+class Recommendations(tk.Frame):
+    def __init__(self, parent):
+        super().__init__(parent)
+        
+        # 1. Header
+        tk.Label(self, text="Find Your Sound", font=self.master.headingFont).pack(pady=20)
+        
+        # 2. Controls Frame
+        controls_frame = tk.Frame(self)
+        controls_frame.pack(pady=10)
+
+        self.recentvar = tk.IntVar()
+        tk.Checkbutton(controls_frame, text="Recent (2023+)", variable=self.recentvar, 
+                       font=self.master.defaultFont).pack(side="left", padx=20)
+
+        # --- DYNAMIC GENRE BUTTONS ---
+        button_container = tk.Frame(self)
+        button_container.pack(pady=10)
+
+        # We call the new function to see what's actually in the DB
+        available_genres = get_unique_genres() 
+
+        if not available_genres:
+            tk.Label(button_container, text="No genres found in database.", font=self.master.defaultFont).pack()
+        else:
+            for genre in available_genres:
+                # Create a button for every genre found
+                btn = tk.Button(button_container, text=genre, font=self.master.boldFont,
+                                command=self.make_callback(genre))
+                btn.pack(side="left", padx=5, pady=5)
+
+        # 3. Results Area (Scrollable Canvas)
+        self.canvas = tk.Canvas(self, borderwidth=0, highlightthickness=0)
+        self.frame = tk.Frame(self.canvas)
+        self.vsb = tk.Scrollbar(self, orient="vertical", command=self.canvas.yview)
+        self.canvas.configure(yscrollcommand=self.vsb.set)
+
+        self.vsb.pack(side="right", fill="y")
+        self.canvas.pack(side="left", fill="both", expand=True, pady=20, padx=20)
+        self.canvaswindow = self.canvas.create_window((0,0), window=self.frame, anchor="nw", tags="self.frame")
+        
+        self.frame.bind("<Configure>", self.onframeconfigure)
+        self.canvas.bind("<Configure>", self.oncanvasconfigure)
+
+    def make_callback(self, genre):
+        return lambda: self.runrecengine(genre)
+
+    def onframeconfigure(self, event):
+        self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+
+    def oncanvasconfigure(self, event):
+        self.canvas.itemconfig(self.canvaswindow, width=event.width)
+
+    def runrecengine(self, selectedgenre):
+        # 1. Clear previous results
+        for widget in self.frame.winfo_children():
+            widget.destroy()
+
+        # 2. Get Data using the strict logic we discussed
+        isrecent = self.recentvar.get() == 1
+        recs = generate_recommendations(selectedgenre, isrecent)
+
+        if not recs:
+            tk.Label(self.frame, text=f"No matches found for {selectedgenre}!", 
+                     font=self.master.defaultFont, fg="#ff5555").pack(pady=20)
+            return
+
+        # 3. Format and Display
+        formatted_data = [(r[1], r[6]) for r in recs]
+        showcovers(self.frame, formatted_data)
+
 app = Application()
 app.mainloop()
