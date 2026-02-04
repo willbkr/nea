@@ -1,0 +1,134 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.2 Safari/605.1.15" version="29.3.7">
+  <diagram name="Page-1" id="ALULoys-NCaZh8ix076K">
+    <mxGraphModel dx="976" dy="920" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-11" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="CofBLvuGGsUt7ew7tkrg-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" value="START" vertex="1">
+          <mxGeometry height="60" width="120" x="320" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-35" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="CofBLvuGGsUt7ew7tkrg-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Display Home Page" vertex="1">
+          <mxGeometry height="60" width="120" x="320" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Yes" vertex="1">
+          <mxGeometry height="30" width="60" x="370" y="495" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-12" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="CofBLvuGGsUt7ew7tkrg-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-14" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="CofBLvuGGsUt7ew7tkrg-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-10" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=default;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=default;convertToSvg=1;" value="&lt;span style=&quot;caret-color: rgb(255, 255, 255); font-family: Helvetica; font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: none; float: none; display: inline !important;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;CHECK: Is there a saved user?&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="100" width="140" x="310" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-17" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="CofBLvuGGsUt7ew7tkrg-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Display Login Page" vertex="1">
+          <mxGeometry height="60" width="120" x="480" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-16" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;IN: Login Credentials&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="480" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-25" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="CofBLvuGGsUt7ew7tkrg-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-26" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="CofBLvuGGsUt7ew7tkrg-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-21" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="&lt;font&gt;Does username and password match?&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="150" x="465" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-22" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.506;entryY=0.048;entryDx=0;entryDy=0;entryPerimeter=0;" target="CofBLvuGGsUt7ew7tkrg-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-23" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="No" vertex="1">
+          <mxGeometry height="30" width="60" x="430" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-54" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="CofBLvuGGsUt7ew7tkrg-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Return error" vertex="1">
+          <mxGeometry height="60" width="120" x="640" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-27" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Yes" vertex="1">
+          <mxGeometry height="30" width="60" x="430" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-28" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="No" vertex="1">
+          <mxGeometry height="30" width="60" x="590" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-37" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="CofBLvuGGsUt7ew7tkrg-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-31" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" value="&lt;span style=&quot;font-size: 9px;&quot;&gt;IN: User picks a new&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 9px;&quot;&gt;page to explore&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 9px;&quot;&gt;(Search)&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="320" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-39" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="CofBLvuGGsUt7ew7tkrg-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-36" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Display Search Page" vertex="1">
+          <mxGeometry height="60" width="120" x="320" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-41" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="CofBLvuGGsUt7ew7tkrg-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-38" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" value="IN: Search Query" vertex="1">
+          <mxGeometry height="60" width="120" x="320" y="810" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-40" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;Check: Is the entry field empty?&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="150" x="305" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-52" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="CofBLvuGGsUt7ew7tkrg-36">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-42" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Return error" vertex="1">
+          <mxGeometry height="60" width="120" x="490" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-43" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Yes" vertex="1">
+          <mxGeometry height="30" width="60" x="440" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-45" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Run Search" vertex="1">
+          <mxGeometry height="60" width="120" x="160" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-49" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.998;entryY=0.412;entryDx=0;entryDy=0;entryPerimeter=0;" target="CofBLvuGGsUt7ew7tkrg-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-50" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="No" vertex="1">
+          <mxGeometry height="30" width="60" x="270" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-60" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="CofBLvuGGsUt7ew7tkrg-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-51" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;OUT: Search Results&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="150" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-53" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.011;entryY=0.411;entryDx=0;entryDy=0;entryPerimeter=0;" target="CofBLvuGGsUt7ew7tkrg-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-56" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.56;entryY=-0.047;entryDx=0;entryDy=0;entryPerimeter=0;" target="CofBLvuGGsUt7ew7tkrg-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-57" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" value="END" vertex="1">
+          <mxGeometry height="60" width="120" x="320" y="1090" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-61" edge="1" parent="1" source="CofBLvuGGsUt7ew7tkrg-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="CofBLvuGGsUt7ew7tkrg-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CofBLvuGGsUt7ew7tkrg-59" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User picks &#39;exit&#39; or &#39;sign off&#39;" vertex="1">
+          <mxGeometry height="60" width="120" x="320" y="1010" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
