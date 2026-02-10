@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.2 Safari/605.1.15" version="29.3.7">
   <diagram name="Page-1" id="gBb_tzzqNDNcaWnHkX-m">
-    <mxGraphModel dx="1349" dy="342" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2133" dy="816" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -11,10 +11,20 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-29" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-2">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="400" />
+              <mxPoint x="180" y="400" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-30" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-5">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="400" />
+              <mxPoint x="580" y="400" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Music Management&lt;div&gt;Platform&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="320" y="160" as="geometry" />
@@ -25,14 +35,56 @@
         <mxCell id="NeRB41dmDAcjirurbRyE-34" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-21">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-1" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-2" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Navigation and&amp;nbsp;&lt;div&gt;Session controls&lt;/div&gt;" vertex="1">
-          <mxGeometry height="60" width="120" x="-160" y="360" as="geometry" />
+          <mxGeometry height="60" width="120" x="120" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-7" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-8" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-9" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-12" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-13">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Search + Analysis" vertex="1">
           <mxGeometry height="60" width="120" x="520" y="240" as="geometry" />
         </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-13" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-14" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-15" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-16" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Data Management" vertex="1">
-          <mxGeometry height="60" width="120" x="800" y="360" as="geometry" />
+          <mxGeometry height="60" width="120" x="520" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-3" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-4" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-5" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UKHRO2q4i65cQqb8fYQF-6" edge="1" parent="1" source="NeRB41dmDAcjirurbRyE-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NeRB41dmDAcjirurbRyE-8">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Authentication" vertex="1">
           <mxGeometry height="60" width="120" x="120" y="240" as="geometry" />
@@ -62,28 +114,28 @@
           <mxGeometry height="40" width="80" x="690" y="320" as="geometry" />
         </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Saved User Check" vertex="1">
-          <mxGeometry height="40" width="80" x="-190" y="440" as="geometry" />
+          <mxGeometry height="40" width="80" x="90" y="520" as="geometry" />
         </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Page Switching" vertex="1">
-          <mxGeometry height="40" width="80" x="-90" y="440" as="geometry" />
+          <mxGeometry height="40" width="80" x="190" y="520" as="geometry" />
         </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Main App Controller" vertex="1">
-          <mxGeometry height="40" width="80" x="-290" y="440" as="geometry" />
+          <mxGeometry height="40" width="80" x="-10" y="520" as="geometry" />
         </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Sign Out" vertex="1">
-          <mxGeometry height="40" width="80" x="10" y="440" as="geometry" />
+          <mxGeometry height="40" width="80" x="290" y="520" as="geometry" />
         </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Artist Creation" vertex="1">
-          <mxGeometry height="40" width="80" x="770" y="440" as="geometry" />
+          <mxGeometry height="40" width="80" x="490" y="520" as="geometry" />
         </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Admin Interface" vertex="1">
-          <mxGeometry height="40" width="80" x="870" y="440" as="geometry" />
+          <mxGeometry height="40" width="80" x="590" y="520" as="geometry" />
         </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Add Albums" vertex="1">
-          <mxGeometry height="40" width="80" x="670" y="440" as="geometry" />
+          <mxGeometry height="40" width="80" x="390" y="520" as="geometry" />
         </mxCell>
         <mxCell id="NeRB41dmDAcjirurbRyE-26" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User Account Management" vertex="1">
-          <mxGeometry height="40" width="80" x="970" y="440" as="geometry" />
+          <mxGeometry height="40" width="80" x="690" y="520" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
