@@ -1,1 +1,1 @@
-this is my NEA so pls fuck off x
+lmao if putting this shit on publicly visible gets me disqualified deadass im killing myself
